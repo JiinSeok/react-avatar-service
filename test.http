@@ -1,0 +1,18 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=WebStorm
+
+###
+GET https://learn.codeit.kr/api/avatart-service/users/me
+
+###
+DELETE https://learn.codeit.kr/api/avatar-service/auth/logout
+
+###
+POST https://learn.codeit.kr/api/avatar-service/auth/login
+Content-Type: application/json
+
+{
+  "email": "holiday@afternoon.com",
+  "password": "$3cr3t!"
+}
