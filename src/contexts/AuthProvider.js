@@ -62,7 +62,7 @@ export default function AuthProvider({ children }) {
       getAvatar()
     }
 
-  }, [])
+  }, [user])
 
   return (
     <AuthContext.Provider value={{
