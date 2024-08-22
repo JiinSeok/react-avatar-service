@@ -63,7 +63,7 @@ function ToasterProvider({ children }) {
       </div>
     </ToasterContext.Provider>
   );
-};
+}
 
 export function useToaster() {
   const { toaster } = useContext(ToasterContext);
