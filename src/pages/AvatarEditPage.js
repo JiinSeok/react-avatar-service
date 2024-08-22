@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../lib/axios';
 import Button from '../components/Button';
 import Avatar from '../components/Avatar';
 import { AvatarImageLabels } from '../assets/avatar';
 import AvatarSelector from '../components/AvatarSelector';
 import styles from './AvatarEditPage.module.css';
+import {useAuth} from "../contexts/AuthProvider";
 
 function AvatarProperties({
   avatar: { skin, hairType, hairColor, clothes, accessories },
@@ -47,12 +47,13 @@ function AvatarEditPage() {
     clothes: 'tshirtBasic',
     accessories: 'none',
   };
-  const [avatar, setAvatar] = useState(initialAvatar);
   const navigate = useNavigate();
+  const { avatar, updateAvatar } = useAuth()
+  const [editingAvatar, setEditingAvatar] = useState(avatar)
 
   function handleSelectProperty(key, value) {
-    setAvatar({
-      ...avatar,
+    setEditingAvatar({
+      ...editingAvatar,
       [key]: value,
     });
   }
@@ -62,11 +63,14 @@ function AvatarEditPage() {
   }
 
   async function handleSubmit() {
-    await axios.patch('/users/me/avatar', avatar);
+    await updateAvatar(editingAvatar);
     navigate('/me');
   }
 
-  if (!avatar) return null;
+  if (!editingAvatar) return null;
+  if (!avatar) {
+    setEditingAvatar(initialAvatar);
+  }
 
   return (
     <>
@@ -79,12 +83,12 @@ function AvatarEditPage() {
         </nav>
         <div className={styles.Preview}>
           <div className={styles.AvatarContainer}>
-            <AvatarProperties avatar={avatar} />
-            <Avatar withBorder value={avatar} />
+            <AvatarProperties avatar={editingAvatar} />
+            <Avatar withBorder value={editingAvatar} />
           </div>
         </div>
         <div className={styles.Footer}>
-          <AvatarSelector avatar={avatar} onSelect={handleSelectProperty} />
+          <AvatarSelector avatar={editingAvatar} onSelect={handleSelectProperty} />
         </div>
       </div>
     </>

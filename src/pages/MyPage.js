@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom';
-import axios from '../lib/axios';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import styles from './MyPage.module.css';
@@ -10,25 +9,12 @@ import EditImage from '../assets/edit.svg';
 import Avatar from '../components/Avatar';
 import downloadAvatar from '../lib/downloadAvatar';
 import { useToaster } from '../contexts/ToasterProvider';
-import { useEffect, useState } from 'react';
+import {useAuth} from "../contexts/AuthProvider";
 
 function MyPage() {
-  const [user, setUser] = useState(null);
-  const [avatar, setAvatar] = useState(null);
+  const { user, avatar } = useAuth();
   const navigate = useNavigate();
   const toast = useToaster();
-
-  async function getMe() {
-    const res = await axios.get('/users/me');
-    const user = res.data;
-    setUser(user);
-  }
-
-  async function getMyAvatar() {
-    const res = await axios.get('/users/me/avatar');
-    const avatar = res.data;
-    setAvatar(avatar);
-  }
 
   function handleEditClick() {
     navigate('/me/edit');
@@ -43,11 +29,6 @@ function MyPage() {
     navigator.clipboard.writeText(url);
     toast('info', '공유 링크를 복사했어요.');
   }
-
-  useEffect(() => {
-    getMe();
-    getMyAvatar();
-  }, []);
 
   if (!user || !avatar) {
     return null;
