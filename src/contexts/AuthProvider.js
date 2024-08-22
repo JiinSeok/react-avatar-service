@@ -1,56 +1,67 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import axios from "axios";
+import axios from "../lib/axios";
 
 const AuthContext = createContext({
   user: null,
   avatar: null,
-  getUser: () => {},
-  getAvatar: () => {},
   updateUser: () => {},
   updateAvatar: () => {},
-  login: () => {},
-  logout: () => {},
+  handleLogin: () => {},
+  handleLogout: () => {},
 });
 
-export function AuthProvider({ children }) {
+export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [avatar, setAvatar] = useState(null);
 
   async function getUser() {
-    const res = await axios.get('/users/me');
+    try {
+      const res = await axios.get('/users/me');
+      const nextUser = res.data;
+      setUser(nextUser);
+    } catch (error) {
+      throw new Error('사용자 정보를 불러올 수 없습니다.');
+    }
+  }
+
+  async function updateUser({ name, email }) {
+    const res = await axios.patch('/user/me', { name, email });
     const nextUser = res.data;
     setUser(nextUser);
   }
 
-  async function updateUser({ name, email }) {
-    await axios.patch('user/me', { name, email });
-  }
-
   async function getAvatar() {
-   const res = await axios.get('/users/me/avatar');
-   const nextAvatar = res.data;
-   setAvatar(nextAvatar);
+    try {
+      const res = await axios.get('/users/me/avatar');
+      const nextAvatar = res.data;
+      setAvatar(nextAvatar);
+    } catch (error) {
+      throw new Error('아바타를 불러올 수 없습니다.');
+    }
   }
 
-  async function updateAvatar({ avatar }) {
+  async function updateAvatar(avatar) {
     const res = await axios.patch('/users/me/avatar', avatar);
     const nextAvatar = res.data;
     setAvatar(nextAvatar);
   }
 
-  async function login({ email, password }) {
-    await axios.post('/users/auth/login', { email, password });
+  async function handleLogin({ email, password }) {
+    await axios.post('/auth/login', { email, password });
     await getUser();
     await getAvatar();
   }
 
-  async function logout() {
+  async function handleLogout() {
     await axios.delete('/auth/logout');
   }
 
   useEffect(() => {
-    getUser()
-    getAvatar()
+    if(user){
+      getUser()
+      getAvatar()
+    }
+
   }, [])
 
   return (
@@ -59,8 +70,8 @@ export function AuthProvider({ children }) {
       avatar,
       updateUser,
       updateAvatar,
-      login,
-      logout,
+      handleLogin,
+      handleLogout,
     }}>
       {children}
     </AuthContext.Provider>
