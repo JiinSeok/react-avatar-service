@@ -80,7 +80,7 @@ export function AuthProvider({ children }) {
       getUser().then()
       getAvatar().then()
     }
-  }, [])
+  }, [user])
 
   return (
     <AuthContext.Provider value={{
