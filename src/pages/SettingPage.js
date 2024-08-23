@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Label from '../components/Label';
 import Input from '../components/Input';
@@ -10,10 +10,9 @@ function SettingPage() {
   const navigate = useNavigate();
   const { user, updateUser } = useAuth()
   const [values, setValues] = useState({
-    name: user.name,
-    email: user.email,
+    name: '',
+    email: '',
   });
-
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -29,6 +28,16 @@ function SettingPage() {
     await updateUser({ name, email });
     navigate('/me');
   }
+
+  useEffect(() => {
+    if (user) {
+      const { name, email } = user;
+      setValues({
+        name,
+        email,
+      })
+    }
+  }, [user]);
 
   return (
     <>
