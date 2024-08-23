@@ -4,13 +4,14 @@ import axios from "../lib/axios";
 const AuthContext = createContext({
   user: null,
   avatar: null,
+  createUser: () => {},
   updateUser: () => {},
   updateAvatar: () => {},
   handleLogin: () => {},
   handleLogout: () => {},
 });
 
-export default function AuthProvider({ children }) {
+export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [avatar, setAvatar] = useState(null);
 
@@ -24,10 +25,19 @@ export default function AuthProvider({ children }) {
     }
   }
 
+  async function createUser({ name, email, password }) {
+    await axios.post('/users', { name, email, password });
+  }
+
   async function updateUser({ name, email }) {
-    const res = await axios.patch('/user/me', { name, email });
-    const nextUser = res.data;
-    setUser(nextUser);
+    try {
+      const res = await axios.patch('/user/me', { name, email });
+      const nextUser = res.data;
+      setUser(nextUser);
+    } catch (error) {
+      throw new Error('사용자 정보를 수정할 수 없습니다.');
+    }
+
   }
 
   async function getAvatar() {
@@ -41,15 +51,24 @@ export default function AuthProvider({ children }) {
   }
 
   async function updateAvatar(avatar) {
-    const res = await axios.patch('/users/me/avatar', avatar);
-    const nextAvatar = res.data;
-    setAvatar(nextAvatar);
+    try {
+      const res = await axios.patch('/users/me/avatar', avatar);
+      const nextAvatar = res.data;
+      setAvatar(nextAvatar);
+    } catch (error) {
+      throw new Error('아바타를 수정할 수 없습니다.')
+    }
+
   }
 
   async function handleLogin({ email, password }) {
-    await axios.post('/auth/login', { email, password });
-    await getUser();
-    await getAvatar();
+    try {
+      await axios.post('/auth/login', { email, password });
+      await getUser();
+      await getAvatar();
+    } catch (error) {
+      throw new Error(error.response.data);
+    }
   }
 
   async function handleLogout() {
@@ -58,16 +77,16 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     if(user){
-      getUser()
-      getAvatar()
+      getUser().then()
+      getAvatar().then()
     }
-
-  }, [user])
+  }, [])
 
   return (
     <AuthContext.Provider value={{
       user,
       avatar,
+      createUser,
       updateUser,
       updateAvatar,
       handleLogin,
@@ -78,7 +97,7 @@ export default function AuthProvider({ children }) {
   )
 }
 
-export function useAuth() {
+export function useAuth() { // 커스텀 훅 만들기
   const context = useContext(AuthContext);
   if (!context) {
     throw new Error('useAuth must be used within a AuthProvider.');
