@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../lib/axios';
 import Label from '../components/Label';
 import Input from '../components/Input';
 import Button from '../components/Button';
@@ -20,7 +19,7 @@ function RegisterPage() {
   });
   const toast = useToaster();
   const navigate = useNavigate();
-  const { handleLogin } = useAuth()
+  const { handleLogin, createUser } = useAuth()
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -38,10 +37,14 @@ function RegisterPage() {
       toast('warn', '비밀번호가 일치하지 않습니다.');
       return;
     }
-    const { name, email, password } = values;
-    await axios.post('/users', { name, email, password });
-    await handleLogin({ email, password });
-    navigate('/me');
+    try {
+      const { name, email, password } = values;
+      await createUser({ name, email, password });
+      await handleLogin({ email, password });
+      navigate('/me');
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   return (
