@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import Avatar from '../components/Avatar';
 import { AvatarImageLabels } from '../assets/avatar';
 import AvatarSelector from '../components/AvatarSelector';
 import styles from './AvatarEditPage.module.css';
-import {useAuth} from "../contexts/AuthProvider";
+import { useAuth } from "../contexts/AuthProvider";
 
 function AvatarProperties({
   avatar: { skin, hairType, hairColor, clothes, accessories },
@@ -40,20 +40,13 @@ function AvatarProperties({
 }
 
 function AvatarEditPage() {
-  const initialAvatar = {
-    skin: 'tone100',
-    hairType: 'none',
-    hairColor: 'black',
-    clothes: 'tshirtBasic',
-    accessories: 'none',
-  };
   const navigate = useNavigate();
-  const { avatar, updateAvatar } = useAuth()
-  const [editingAvatar, setEditingAvatar] = useState(avatar)
+  const { avatar: initialAvatar, updateAvatar } = useAuth()
+  const [avatar, setAvatar] = useState(null)
 
   function handleSelectProperty(key, value) {
-    setEditingAvatar({
-      ...editingAvatar,
+    setAvatar({
+      ...avatar,
       [key]: value,
     });
   }
@@ -63,14 +56,15 @@ function AvatarEditPage() {
   }
 
   async function handleSubmit() {
-    await updateAvatar(editingAvatar);
+    await updateAvatar(avatar);
     navigate('/me');
   }
 
-  if (!editingAvatar) return null;
-  if (!avatar) {
-    setEditingAvatar(initialAvatar);
-  }
+  useEffect(() => {
+    setAvatar(initialAvatar);
+  }, [initialAvatar]);
+
+  if (!avatar) return null;
 
   return (
     <>
@@ -83,12 +77,12 @@ function AvatarEditPage() {
         </nav>
         <div className={styles.Preview}>
           <div className={styles.AvatarContainer}>
-            <AvatarProperties avatar={editingAvatar} />
-            <Avatar withBorder value={editingAvatar} />
+            <AvatarProperties avatar={avatar} />
+            <Avatar withBorder value={avatar} />
           </div>
         </div>
         <div className={styles.Footer}>
-          <AvatarSelector avatar={editingAvatar} onSelect={handleSelectProperty} />
+          <AvatarSelector avatar={avatar} onSelect={handleSelectProperty} />
         </div>
       </div>
     </>
