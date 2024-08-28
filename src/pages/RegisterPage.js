@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from '../lib/axios';
 import Label from '../components/Label';
 import Input from '../components/Input';
 import Button from '../components/Button';
@@ -8,7 +9,7 @@ import Link from '../components/Link';
 import GoogleImage from '../assets/google.svg';
 import styles from './RegisterPage.module.css';
 import { useToaster } from '../contexts/ToasterProvider';
-import {useAuth} from "../contexts/AuthProvider";
+import { useAuth } from "../contexts/AuthProvider";
 
 function RegisterPage() {
   const [values, setValues] = useState({
@@ -19,7 +20,7 @@ function RegisterPage() {
   });
   const toast = useToaster();
   const navigate = useNavigate();
-  const { handleLogin, createUser } = useAuth()
+  const { handleLogin } = useAuth()
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -39,11 +40,11 @@ function RegisterPage() {
     }
     try {
       const { name, email, password } = values;
-      await createUser({ name, email, password });
+      await axios.post('/users',{ name, email, password });
       await handleLogin({ email, password });
       navigate('/me');
     } catch (error) {
-      alert(error.message);
+      toast(error.response.data);
     }
   }
 

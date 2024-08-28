@@ -3,7 +3,7 @@ import Button from './Button';
 import Link from './Link';
 import Avatar from './Avatar';
 import logoImage from '../assets/logo.svg';
-import {useAuth} from "../contexts/AuthProvider";
+import { useAuth } from "../contexts/AuthProvider";
 
 export function PublicNav() {
   return (

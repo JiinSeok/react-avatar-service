@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import Avatar from '../components/Avatar';
@@ -40,9 +40,9 @@ function AvatarProperties({
 }
 
 function AvatarEditPage() {
-  const navigate = useNavigate();
   const { avatar: initialAvatar, updateAvatar } = useAuth()
   const [avatar, setAvatar] = useState(null)
+  const navigate = useNavigate();
 
   function handleSelectProperty(key, value) {
     setAvatar({

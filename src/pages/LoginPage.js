@@ -7,7 +7,7 @@ import HorizontalRule from '../components/HorizontalRule';
 import Link from '../components/Link';
 import GoogleImage from '../assets/google.svg';
 import styles from './LoginPage.module.css';
-import {useAuth} from "../contexts/AuthProvider";
+import { useAuth } from "../contexts/AuthProvider";
 
 function LoginPage() {
   const [values, setValues] = useState({
@@ -61,7 +61,7 @@ function LoginPage() {
           value={values.password}
           onChange={handleChange}
         />
-        <Button className={styles.Button}>로그인</Button>
+        <Button className={styles.Button} type={"submit"}>로그인</Button>
         <HorizontalRule className={styles.HorizontalRule}>또는</HorizontalRule>
         <Button
           className={styles.GoogleButton}

@@ -9,7 +9,7 @@ import EditImage from '../assets/edit.svg';
 import Avatar from '../components/Avatar';
 import downloadAvatar from '../lib/downloadAvatar';
 import { useToaster } from '../contexts/ToasterProvider';
-import {useAuth} from "../contexts/AuthProvider";
+import { useAuth } from "../contexts/AuthProvider";
 
 function MyPage() {
   const { user, avatar } = useAuth();
