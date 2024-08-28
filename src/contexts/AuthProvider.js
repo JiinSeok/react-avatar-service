@@ -1,4 +1,5 @@
-import {createContext, useContext, useEffect, useState} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../lib/axios";
 
 const AuthContext = createContext({
@@ -93,10 +94,17 @@ export function AuthProvider({ children }) {
   )
 }
 
-export function useAuth() { // 커스텀 훅 만들기
+export function useAuth(required) { // 커스텀 훅 만들기
   const context = useContext(AuthContext);
+  const navigate = useNavigate();
   if (!context) {
     throw new Error('useAuth must be used within a AuthProvider.');
   }
+
+  useEffect(() => {
+    if (required && !context.user) {
+      navigate('/login')
+    }
+  }, [context.user, navigate, required]);
   return context;
 }

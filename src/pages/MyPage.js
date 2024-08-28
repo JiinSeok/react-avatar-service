@@ -12,7 +12,7 @@ import { useToaster } from '../contexts/ToasterProvider';
 import { useAuth } from "../contexts/AuthProvider";
 
 function MyPage() {
-  const { user, avatar } = useAuth();
+  const { user, avatar } = useAuth(true);
   const navigate = useNavigate();
   const toast = useToaster();
 
