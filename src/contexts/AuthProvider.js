@@ -76,7 +76,7 @@ export function AuthProvider({ children }) {
       setUserValues((prevUserValues) => ({
         ...prevUserValues,
         user: nextUser,
-        isLoading: false,
+        isPending: false,
       }));
     } catch (error) {
       throw new Error("사용자 정보를 수정할 수 없습니다.");
