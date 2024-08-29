@@ -94,8 +94,11 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    getUser();
-    getAvatar();
+    if (userValues.user) {
+      getUser().then();
+      getAvatar().then();
+    }
+    // eslint-disable-next-line
   }, []);
 
   return (
