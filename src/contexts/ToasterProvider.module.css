@@ -22,7 +22,9 @@
   position: relative;
   top: -8px;
   opacity: 0;
-  transition: top 0.1s ease-in-out, opacity 0.1s ease-in-out;
+  transition:
+    top 0.1s ease-in-out,
+    opacity 0.1s ease-in-out;
 }
 
 .Toast.mounted {
@@ -36,13 +38,13 @@
 }
 
 .Toast.info {
-  color: #FFFFFF;
-  background-color: #299D65;
+  color: #ffffff;
+  background-color: #299d65;
 }
 
 .Toast.warn {
-  color: #FFFFFF;
-  background-color: #FF5733;
+  color: #ffffff;
+  background-color: #ff5733;
 }
 
 .Icon {

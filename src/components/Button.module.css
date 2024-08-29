@@ -12,21 +12,21 @@ a.Button {
 }
 
 .Button.primary {
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: var(--primary-color);
 }
 
 .Button.secondary {
   color: #000000;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
 .Button.minimal {
   color: #000000;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .Button.outline {
-  background-color: #FFFFFF;
-  border: 1px solid #E1E1E1;
+  background-color: #ffffff;
+  border: 1px solid #e1e1e1;
 }

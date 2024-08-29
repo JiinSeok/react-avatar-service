@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { AvatarImageLabels, PreviewAvatarImages } from '../assets/avatar';
-import styles from './AvatarSelector.module.css';
+import { useState } from "react";
+import { AvatarImageLabels, PreviewAvatarImages } from "../assets/avatar";
+import styles from "./AvatarSelector.module.css";
 
 const AVATAR_SELECTOR_PROPERTY_MAP = {
-  skin: '피부 톤',
-  hairType: '머리 종류',
-  hairColor: '머리 색',
-  clothes: '옷',
-  accessories: '액세서리',
+  skin: "피부 톤",
+  hairType: "머리 종류",
+  hairColor: "머리 색",
+  clothes: "옷",
+  accessories: "액세서리",
 };
 const PROPERTIES = Object.keys(AVATAR_SELECTOR_PROPERTY_MAP);
 const PROPERTY_VALUES = {
@@ -26,7 +26,7 @@ const PROPERTY_IMAGES = {
 };
 
 function AvatarSelector({ avatar, onSelect }) {
-  const [currentProperty, setCurrentProperty] = useState('skin');
+  const [currentProperty, setCurrentProperty] = useState("skin");
   return (
     <>
       <ul className={styles.AvatarMenu}>
@@ -34,7 +34,7 @@ function AvatarSelector({ avatar, onSelect }) {
           <li
             key={property}
             className={`${styles.AvatarMenuItem} ${
-              property === currentProperty ? styles.active : ''
+              property === currentProperty ? styles.active : ""
             }`}
             onClick={() => setCurrentProperty(property)}
           >
@@ -48,7 +48,7 @@ function AvatarSelector({ avatar, onSelect }) {
             <li
               key={propertyValue}
               className={`${styles.AvatarSelectorItem} ${
-                avatar[currentProperty] === propertyValue ? styles.active : ''
+                avatar[currentProperty] === propertyValue ? styles.active : ""
               }`}
               onClick={() => onSelect(currentProperty, propertyValue)}
             >
@@ -56,9 +56,9 @@ function AvatarSelector({ avatar, onSelect }) {
                 className={styles.AvatarSelectorPreview}
                 style={{
                   backgroundImage: `url(${PROPERTY_IMAGES[currentProperty][propertyValue]})`,
-                  backgroundSize: 'contain',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: "contain",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
                 }}
               />
               <div className={styles.AvatarSelectorLabel}>

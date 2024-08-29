@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
-import Avatar from '../components/Avatar';
-import { AvatarImageLabels } from '../assets/avatar';
-import AvatarSelector from '../components/AvatarSelector';
-import styles from './AvatarEditPage.module.css';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
+import Avatar from "../components/Avatar";
+import { AvatarImageLabels } from "../assets/avatar";
+import AvatarSelector from "../components/AvatarSelector";
+import styles from "./AvatarEditPage.module.css";
 import { useAuth } from "../contexts/AuthProvider";
 
 function AvatarProperties({
@@ -40,8 +40,8 @@ function AvatarProperties({
 }
 
 function AvatarEditPage() {
-  const { avatar: initialAvatar, updateAvatar } = useAuth()
-  const [avatar, setAvatar] = useState(null)
+  const { avatar: initialAvatar, updateAvatar } = useAuth();
+  const [avatar, setAvatar] = useState(null);
   const navigate = useNavigate();
 
   function handleSelectProperty(key, value) {
@@ -57,7 +57,7 @@ function AvatarEditPage() {
 
   async function handleSubmit() {
     await updateAvatar(avatar);
-    navigate('/me');
+    navigate("/me");
   }
 
   useEffect(() => {

@@ -3,12 +3,12 @@
 }
 
 html {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
 }
 
 :root {
-  --primary-color: #E97000;
+  --primary-color: #e97000;
   --max-width: 1440px;
 }
 

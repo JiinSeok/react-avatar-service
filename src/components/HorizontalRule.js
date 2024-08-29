@@ -1,6 +1,6 @@
-import styles from './HorizontalRule.module.css';
+import styles from "./HorizontalRule.module.css";
 
-function HorizontalRule({ className = '', children }) {
+function HorizontalRule({ className = "", children }) {
   if (children) {
     return (
       <div className={`${className} ${styles.Container}`}>

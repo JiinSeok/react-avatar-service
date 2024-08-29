@@ -1,6 +1,6 @@
-import styles from './TextArea.module.css';
+import styles from "./TextArea.module.css";
 
-function TextArea({ className = '', children, ...rest }) {
+function TextArea({ className = "", children, ...rest }) {
   return (
     <textarea className={`${styles.TextArea} ${className}`} {...rest}>
       {children}

@@ -1,8 +1,8 @@
-import styles from './Button.module.css';
+import styles from "./Button.module.css";
 
 function Button({
-  className = '',
-  appearance = 'primary',
+  className = "",
+  appearance = "primary",
   children,
   as: AsComponent,
   ...rest

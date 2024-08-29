@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from './components/App';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import App from "./components/App";
 import {
   BackLinkLayout,
   CardLayout,
@@ -7,14 +7,14 @@ import {
   LandingLayout,
   PublicLayout,
   UserLayout,
-} from './components/Layout';
-import HomePage from './pages/HomePage';
-import MyPage from './pages/MyPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import UserPage from './pages/UserPage';
-import SettingPage from './pages/SettingPage';
-import AvatarEditPage from './pages/AvatarEditPage';
+} from "./components/Layout";
+import HomePage from "./pages/HomePage";
+import MyPage from "./pages/MyPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import UserPage from "./pages/UserPage";
+import SettingPage from "./pages/SettingPage";
+import AvatarEditPage from "./pages/AvatarEditPage";
 
 function Main() {
   return (

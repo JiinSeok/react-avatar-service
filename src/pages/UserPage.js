@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from '../lib/axios';
-import Card from '../components/Card';
-import Avatar from '../components/Avatar';
-import styles from './UserPage.module.css';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "../lib/axios";
+import Card from "../components/Card";
+import Avatar from "../components/Avatar";
+import styles from "./UserPage.module.css";
 
 function UserPage() {
   const [user, setUser] = useState(null);

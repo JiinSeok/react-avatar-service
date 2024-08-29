@@ -1,8 +1,8 @@
-import { Outlet, useNavigate } from 'react-router-dom';
-import Nav, { PublicNav } from './Nav';
-import Card from './Card';
-import styles from './Layout.module.css';
-import LeftAngleImage from '../assets/left-angle.svg';
+import { Outlet, useNavigate } from "react-router-dom";
+import Nav, { PublicNav } from "./Nav";
+import Card from "./Card";
+import styles from "./Layout.module.css";
+import LeftAngleImage from "../assets/left-angle.svg";
 
 export function LandingLayout() {
   return (

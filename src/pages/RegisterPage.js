@@ -1,26 +1,26 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from '../lib/axios';
-import Label from '../components/Label';
-import Input from '../components/Input';
-import Button from '../components/Button';
-import HorizontalRule from '../components/HorizontalRule';
-import Link from '../components/Link';
-import GoogleImage from '../assets/google.svg';
-import styles from './RegisterPage.module.css';
-import { useToaster } from '../contexts/ToasterProvider';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "../lib/axios";
+import Label from "../components/Label";
+import Input from "../components/Input";
+import Button from "../components/Button";
+import HorizontalRule from "../components/HorizontalRule";
+import Link from "../components/Link";
+import GoogleImage from "../assets/google.svg";
+import styles from "./RegisterPage.module.css";
+import { useToaster } from "../contexts/ToasterProvider";
 import { useAuth } from "../contexts/AuthProvider";
 
 function RegisterPage() {
   const [values, setValues] = useState({
-    name: '',
-    email: '',
-    password: '',
-    passwordRepeat: '',
+    name: "",
+    email: "",
+    password: "",
+    passwordRepeat: "",
   });
   const toast = useToaster();
   const navigate = useNavigate();
-  const { handleLogin } = useAuth()
+  const { handleLogin } = useAuth();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -35,14 +35,14 @@ function RegisterPage() {
     e.preventDefault();
 
     if (values.password !== values.passwordRepeat) {
-      toast('warn', '비밀번호가 일치하지 않습니다.');
+      toast("warn", "비밀번호가 일치하지 않습니다.");
       return;
     }
     try {
       const { name, email, password } = values;
-      await axios.post('/users',{ name, email, password });
+      await axios.post("/users", { name, email, password });
       await handleLogin({ email, password });
-      navigate('/me');
+      navigate("/me");
     } catch (error) {
       toast(error.response.data);
     }

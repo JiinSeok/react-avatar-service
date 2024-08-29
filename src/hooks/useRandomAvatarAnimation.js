@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { AvatarImages } from '../assets/avatar';
+import { useEffect, useState } from "react";
+import { AvatarImages } from "../assets/avatar";
 
 const PROPERTY_VALUES = {
   skin: Object.keys(AvatarImages.skin),
@@ -20,11 +20,11 @@ function generateRandomAvatar() {
 
 function useRandomAvatarAnimation() {
   const [avatar, setAvatar] = useState({
-    skin: 'tone100',
-    hairType: 'short1',
-    hairColor: 'black',
-    clothes: 'tshirtBasic',
-    accessories: 'none',
+    skin: "tone100",
+    hairType: "short1",
+    hairColor: "black",
+    clothes: "tshirtBasic",
+    accessories: "none",
   });
 
   useEffect(() => {

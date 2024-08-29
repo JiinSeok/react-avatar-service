@@ -1,6 +1,6 @@
 .Header,
 .AvatarContainer {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 
 .Header {
@@ -29,7 +29,7 @@
   content: " ";
   width: 11px;
   height: 20px;
-  background-color: #ECECEC;
+  background-color: #ececec;
   position: absolute;
   top: -14px;
   z-index: -1;
@@ -55,7 +55,7 @@
   gap: 11px 40px;
 }
 
-.Profile>* {
+.Profile > * {
   display: flex;
   align-items: center;
 }

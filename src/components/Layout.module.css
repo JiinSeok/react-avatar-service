@@ -6,13 +6,13 @@
 }
 
 .Layout.dark {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 
 .CardLayout {
   min-height: 100vh;
   padding: 64px;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 
 .CardContainer {
@@ -30,7 +30,7 @@
 .Main.landing {
   padding: 64px 40px;
   background-image: url("../assets/grid-bg.svg");
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   background-repeat: repeat;
   background-position: -24px -24px;
   padding: 64px 24px;
@@ -64,7 +64,7 @@
 .FullLayout {
   min-height: 100vh;
   background-image: url("../assets/grid-bg.svg");
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   background-repeat: repeat;
   background-position: -24px -24px;
   padding: 24px;

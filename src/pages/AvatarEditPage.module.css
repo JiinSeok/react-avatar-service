@@ -28,7 +28,6 @@
   position: absolute;
   top: 0;
   right: calc(100% + 111px);
-
 }
 
 .AvatarPropertiesTitle {
@@ -51,13 +50,13 @@
 .PropertyValue {
   border-radius: 32px;
   padding: 4px 16px;
-  background-color: #E6E6E6;
+  background-color: #e6e6e6;
 }
 
 .Footer {
   border-radius: 16px;
-  border: 9px solid #FFFFFF;
-  background: #FFF;
+  border: 9px solid #ffffff;
+  background: #fff;
   margin-top: 24px;
   padding: 20px 8px 23px;
 }

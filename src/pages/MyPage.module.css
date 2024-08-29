@@ -1,6 +1,6 @@
 .Header,
 .AvatarContainer {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 
 .Header {
@@ -23,7 +23,7 @@
   content: " ";
   width: 11px;
   height: 20px;
-  background-color: #ECECEC;
+  background-color: #ececec;
   position: absolute;
   top: -14px;
   z-index: -1;
@@ -59,8 +59,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ECECEC;
-  background-color: #FFF;
+  border: 1px solid #ececec;
+  background-color: #fff;
   border-radius: 16px;
 }
 
@@ -95,11 +95,11 @@
   cursor: pointer;
 }
 
-.Profile:hover>.Edit {
+.Profile:hover > .Edit {
   opacity: 1;
 }
 
-.Profile>.Edit {
+.Profile > .Edit {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -107,7 +107,7 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.Profile>* {
+.Profile > * {
   display: flex;
   align-items: center;
 }

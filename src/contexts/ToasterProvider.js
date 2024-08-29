@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState } from 'react';
-import checkImage from '../assets/check.svg';
-import useIsMounted from '../hooks/useIsMounted';
-import styles from './ToasterProvider.module.css';
+import React, { createContext, useContext, useState } from "react";
+import checkImage from "../assets/check.svg";
+import useIsMounted from "../hooks/useIsMounted";
+import styles from "./ToasterProvider.module.css";
 
 const ICONS = {
   info: checkImage,
@@ -12,7 +12,7 @@ function Toast({ type, message, onClick }) {
   const isMounted = useIsMounted(100);
   const icon = ICONS[type];
   const className = `${styles.Toast} ${styles[type]} ${
-    isMounted ? styles.mounted : ''
+    isMounted ? styles.mounted : ""
   }`;
 
   return (
@@ -68,7 +68,7 @@ function ToasterProvider({ children }) {
 export function useToaster() {
   const { toaster } = useContext(ToasterContext);
   if (!toaster) {
-    throw new Error('ToastContext 안에서만 사용할 수 있습니다.');
+    throw new Error("ToastContext 안에서만 사용할 수 있습니다.");
   }
   return toaster;
 }

@@ -11,7 +11,7 @@
 }
 
 .Description {
-  color: #6B6B6B;
+  color: #6b6b6b;
   text-align: center;
   font-size: 20px;
   font-weight: 400;
@@ -27,7 +27,7 @@
   margin: 72px 0 48px;
 }
 
-.Preview>* {
+.Preview > * {
   flex-shrink: 0;
 }
 
@@ -36,26 +36,28 @@
   height: 254px;
 }
 
-
 .AvatarPlaceholder {
   width: 192px;
   height: 200px;
-  filter: invert(100%) sepia(3%) saturate(733%) hue-rotate(212deg) brightness(115%) contrast(84%);
+  filter: invert(100%) sepia(3%) saturate(733%) hue-rotate(212deg)
+    brightness(115%) contrast(84%);
 }
 
 .AvatarPlaceholder:nth-child(2),
 .AvatarPlaceholder:nth-child(6) {
-  filter: invert(100%) sepia(3%) saturate(1176%) hue-rotate(241deg) brightness(116%) contrast(89%);
+  filter: invert(100%) sepia(3%) saturate(1176%) hue-rotate(241deg)
+    brightness(116%) contrast(89%);
 }
 
 .AvatarPlaceholder:nth-child(1),
 .AvatarPlaceholder:nth-child(7) {
-  filter: invert(72%) sepia(80%) saturate(0%) hue-rotate(83deg) brightness(110%) contrast(108%);
+  filter: invert(72%) sepia(80%) saturate(0%) hue-rotate(83deg) brightness(110%)
+    contrast(108%);
 }
 
 .Footer {
   border-radius: 16px;
-  border: 9px solid #FFFFFF;
-  background: #FFF;
+  border: 9px solid #ffffff;
+  background: #fff;
   padding: 20px 8px 23px;
 }
